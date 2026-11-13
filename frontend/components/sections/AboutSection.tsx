@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { CheckCircle2, MapPin, GraduationCap } from "lucide-react";
+import { CheckCircle2, MapPin, GraduationCap, Leaf } from "lucide-react";
+import { Reveal, StaggerContainer, StaggerItem } from "@/components/ui/MotionPrimitives";
 import { getAssetUrl } from "@/lib/api";
 import type { SiteSettings } from "@/types";
 
@@ -57,7 +58,7 @@ export default function AboutSection({ settings }: AboutSectionProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           {/* Left Column: Presentation + Photo + Optional Location */}
-          <div className="lg:col-span-6 space-y-6">
+          <Reveal className="lg:col-span-6 space-y-6">
             {/* Label */}
             <div className="flex items-center gap-3">
               <span
@@ -105,9 +106,9 @@ export default function AboutSection({ settings }: AboutSectionProps) {
                 </p>
 
                 {location && (
-                  <div className="flex items-center gap-2 text-sm font-semibold pt-1"
+                  <div className="inline-flex items-center gap-2 text-sm font-semibold pt-1"
                        style={{ color: "var(--heading-color)" }}>
-                    <MapPin size={18} className="text-red-500 fill-red-500/20 shrink-0" />
+                    <MapPin size={17} style={{ color: "var(--accent)" }} className="shrink-0" />
                     <span>{location}</span>
                   </div>
                 )}
@@ -116,9 +117,9 @@ export default function AboutSection({ settings }: AboutSectionProps) {
 
             {/* Academic badge highlight */}
             <div
-              className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl text-xs font-semibold shadow-xs"
+              className="inline-flex items-center gap-3 px-4 py-2.5 rounded-full text-xs font-semibold shadow-2xs"
               style={{
-                backgroundColor: "var(--card)",
+                backgroundColor: "var(--icon-bg)",
                 border: "1px solid var(--border)",
                 color: "var(--heading-color)",
               }}
@@ -126,48 +127,48 @@ export default function AboutSection({ settings }: AboutSectionProps) {
               <GraduationCap size={16} style={{ color: "var(--primary)" }} />
               <span>Licence en Nutrition et Diététique</span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Right Column: Areas of study + Optional Languages */}
-          <div className="lg:col-span-6 space-y-4 lg:pt-8">
+          <StaggerContainer className="lg:col-span-6 space-y-4 lg:pt-8" staggerDelay={0.1}>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {defaultQualities.map((q, idx) => (
-                <div
+                <StaggerItem
                   key={idx}
-                  className="p-5 rounded-2xl shadow-xs transition-all duration-300 hover:shadow-md flex items-start gap-3.5 group"
+                  className="p-6 rounded-2xl shadow-xs transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-start gap-4 group"
                   style={{
                     backgroundColor: "var(--card)",
                     border: "1px solid var(--border)",
                   }}
                 >
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-105"
                     style={{
-                      backgroundColor: "var(--bg-subtle)",
-                      color: "var(--primary)",
+                      backgroundColor: "var(--icon-bg)",
+                      color: idx === 0 ? "var(--primary)" : "var(--accent)",
                     }}
                   >
-                    <CheckCircle2 size={18} />
+                    {idx === 0 ? <Leaf size={18} /> : <CheckCircle2 size={18} />}
                   </div>
                   <div>
                     <h3
-                      className="text-sm font-bold font-serif-custom mb-1 group-hover:text-primary transition-colors"
+                      className="text-base font-bold font-serif-custom mb-1.5 transition-colors"
                       style={{ color: "var(--heading-color)" }}
                     >
                       {q.title}
                     </h3>
                     <p
-                      className="text-xs leading-relaxed"
+                      className="text-xs sm:text-sm leading-relaxed"
                       style={{ color: "var(--body-text)" }}
                     >
                       {q.desc}
                     </p>
                   </div>
-                </div>
+                </StaggerItem>
               ))}
             </div>
 
-            {languages && <div
+            {languages && <StaggerItem
               className="p-5 sm:p-6 rounded-2xl shadow-xs transition-colors duration-300 flex items-center gap-3"
               style={{
                 backgroundColor: "var(--card)",
@@ -182,8 +183,8 @@ export default function AboutSection({ settings }: AboutSectionProps) {
                 <strong className="font-semibold">Langues :</strong>{" "}
                 <span style={{ color: "var(--body-text)" }}>{languages}</span>
               </p>
-            </div>}
-          </div>
+            </StaggerItem>}
+          </StaggerContainer>
         </div>
       </div>
     </section>

@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <article
-      className="rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col h-full group"
+      className="rounded-2xl overflow-hidden shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col h-full group"
       style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}
     >
       {/* Top Image Preview (cliquable vers Détails) */}

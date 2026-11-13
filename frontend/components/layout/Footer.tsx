@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, ArrowRight } from "lucide-react";
 import { Github, Linkedin } from "@/components/ui/SocialIcons";
+import { Reveal } from "@/components/ui/MotionPrimitives";
 import type { SiteSettings } from "@/types";
 
 interface FooterProps {
@@ -16,7 +17,7 @@ export default function Footer({ settings }: FooterProps) {
     <footer className="border-t transition-colors duration-300" style={{ borderColor: "var(--nav-border)", backgroundColor: "var(--background)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
         {/* Pre-footer Call to Action Card */}
-        <div className="rounded-2xl p-8 sm:p-12 mb-16 text-center" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
+        <Reveal className="rounded-3xl p-8 sm:p-12 mb-16 text-center" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
           <div className="flex items-center justify-center gap-3 mb-3">
             <span className="w-8 h-[1px]" style={{ backgroundColor: "var(--label-color)" }} />
             <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--label-color)" }}>
@@ -33,7 +34,7 @@ export default function Footer({ settings }: FooterProps) {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm rounded shadow-sm transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 text-white font-semibold text-sm rounded-full shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
               style={{ backgroundColor: "var(--btn-primary-bg)" }}
             >
               Me contacter
@@ -41,14 +42,14 @@ export default function Footer({ settings }: FooterProps) {
             </Link>
             <a
               href={`mailto:${email}`}
-              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded transition-all shadow-xs"
+              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-sm rounded-full transition-all duration-200 shadow-xs hover:-translate-y-0.5 hover:bg-black/5 dark:hover:bg-white/5"
               style={{ backgroundColor: "transparent", color: "var(--btn-secondary-text)", border: "1px solid var(--btn-secondary-border)" }}
             >
               <Mail size={16} />
               {email}
             </a>
           </div>
-        </div>
+        </Reveal>
 
         {/* Main Footer Row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-12 border-b" style={{ borderColor: "var(--border)" }}>

@@ -6,7 +6,7 @@
 
 services:
   - type: web
-    name: portfolio-backend
+    name: portfolio-dieudonne-backend
     runtime: node
     region: frankfurt
     plan: free

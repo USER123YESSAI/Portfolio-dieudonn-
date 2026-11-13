@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { MotionProvider } from "@/components/ui/MotionPrimitives";
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const playfair = Playfair_Display({
@@ -115,7 +117,7 @@ export default function RootLayout({
     <html
       lang="fr"
       suppressHydrationWarning
-      className={`${inter.variable} ${playfair.variable} h-full`}
+      className={`${jakarta.variable} ${playfair.variable} h-full`}
     >
       <head>
         <script
@@ -129,7 +131,9 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className="min-h-full antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <MotionProvider>{children}</MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
