@@ -1,16 +1,16 @@
-# Portfolio Professionnel Full-Stack — Yessaïn Nanadoumadji
+# Portfolio Professionnel — Dieudonné Routouang Souloukna
 
-Portfolio moderne, dynamique et sécurisé conçu avec **Next.js (App Router, Tailwind CSS, TypeScript)** et une API REST robuste avec **Node.js (Express, Sequelize, MySQL)**.
+Portfolio professionnel dédié à la Nutrition et à la Diététique, conçu avec **Next.js (App Router, Tailwind CSS, TypeScript)** et une API REST avec **Node.js (Express, Sequelize, MySQL)**.
 
 ---
 
 ## 🌟 Fonctionnalités
 
 - **Section Accueil & Présentation :** Hero captivant avec navigation fluide et liens sociaux.
-- **Section À propos :** Présentation personnalisée, photo portrait et atouts techniques.
-- **Compétences :** Visualisation par catégories (Langages, Frameworks, Outils, Soft Skills).
-- **Projets & Réalisations :** Grille de projets avec filtres, tags technologiques et liens démo/code source.
-- **Parcours interactif :** Expériences professionnelles et formations académiques.
+- **Section À propos :** Présentation et portrait personnalisés.
+- **Domaines de formation :** Mise en avant de la Nutrition et de la Diététique.
+- **Projets & Réalisations :** Grille filtrable pour publier des réalisations lorsqu'elles sont disponibles.
+- **Parcours interactif :** Formation, expériences et certifications renseignées.
 - **Téléchargement sécurisé du CV :** Accès au CV protégé par mot de passe avec boîte modale interactive.
 - **Espace Administrateur complet :**
   - Authentification JWT avec limitation de débit (anti-brute force).
@@ -18,6 +18,8 @@ Portfolio moderne, dynamique et sécurisé conçu avec **Next.js (App Router, Ta
   - Boîte de réception des messages de contact avec indicateur de messages non lus.
   - Gestion des photos (profil & à propos) et configuration du mot de passe du CV.
 - **Dark / Light Mode :** Persistance du thème choisi sans scintillement (FOUC).
+
+Les contenus de démonstration non confirmés (expériences, projets et certifications) ne sont pas préremplis.
 
 ---
 
@@ -54,7 +56,10 @@ npm install
 npm run dev         # Démarrer le client sur http://localhost:3000
 ```
 
+En production, configurez `NEXT_PUBLIC_SITE_URL` avec l'URL publique canonique afin que les métadonnées, le sitemap et le fichier robots utilisent le bon domaine.
+
 ---
 
 ## 📄 Licence
-Tous droits réservés © 2026 Yessaïn Nanadoumadji.
+Tous droits réservés © 2026 Dieudonné Routouang Souloukna.
+# Portfolio-dieudonn-
