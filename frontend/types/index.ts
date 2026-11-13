@@ -22,7 +22,13 @@ export interface Project {
 export interface Skill {
   id: number;
   nom: string;
-  categorie: "langages" | "frameworks" | "outils" | "soft_skills";
+  categorie:
+    | "nutrition"
+    | "dietetique"
+    | "langages"
+    | "frameworks"
+    | "outils"
+    | "soft_skills";
   niveau: number;
   icone?: string;
 }

@@ -13,7 +13,7 @@ type TimelineItem = {
   type: "experience" | "education" | "certification";
   title: string;
   subtitle: string;
-  start: string;
+  start?: string | null;
   end?: string | null;
   description?: string;
   link?: string;
@@ -52,7 +52,7 @@ export default function Timeline({
       end: null,
       link: c.lien_justificatif,
     })),
-  ].sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
+  ].sort((a, b) => new Date(b.start || 0).getTime() - new Date(a.start || 0).getTime());
 
   const icons = {
     experience: Briefcase,
@@ -103,16 +103,20 @@ export default function Timeline({
                       >
                         {badgeLabels[item.type]}
                       </span>
-                      <span className="text-xs font-mono" style={{ color: "var(--body-text)" }}>
-                        {formatDate(item.start)} — {formatDate(item.end)}
-                      </span>
+                      {item.start && (
+                        <span className="text-xs font-mono" style={{ color: "var(--body-text)" }}>
+                          {formatDate(item.start)} — {formatDate(item.end)}
+                        </span>
+                      )}
                     </div>
                     <h3 className="font-bold text-lg sm:text-xl font-serif-custom" style={{ color: "var(--heading-color)" }}>
                       {item.title}
                     </h3>
-                    <p className="text-sm font-semibold mt-0.5" style={{ color: "var(--primary)" }}>
-                      {item.subtitle}
-                    </p>
+                    {item.subtitle && (
+                      <p className="text-sm font-semibold mt-0.5" style={{ color: "var(--primary)" }}>
+                        {item.subtitle}
+                      </p>
+                    )}
                   </div>
                 </div>
 

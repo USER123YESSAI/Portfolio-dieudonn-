@@ -15,57 +15,54 @@ const playfair = Playfair_Display({
   weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://yessain-nanadoumadji.vercel.app";
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+).replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Yessaïn Nanadoumadji — Développeur Full-Stack",
-    template: "%s | Yessaïn Nanadoumadji",
+    default: "Dieudonné Routouang Souloukna — Spécialiste en Nutrition et Diététique",
+    template: "%s | Dieudonné Routouang Souloukna",
   },
   description:
-    "Portfolio professionnel de Yessaïn Nanadoumadji, développeur full-stack. Découvrez mes projets, compétences en conception logicielle et parcours.",
+    "Portfolio professionnel de Dieudonné Routouang Souloukna, diplômé d'une Licence en Nutrition et Diététique.",
   keywords: [
-    "Yessaïn Nanadoumadji",
-    "Yessain Nanadoumadji",
-    "Nanadoumadji Yessaïn",
-    "Yessain",
-    "Développeur Full-Stack",
-    "Développeur Web Dakar",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Conception des Systèmes d'Information",
-    "Portfolio Yessaïn Nanadoumadji"
+    "Dieudonné Routouang Souloukna",
+    "Nutrition",
+    "Diététique",
+    "Licence en Nutrition et Diététique",
+    "Portfolio nutrition et diététique",
   ],
-  authors: [{ name: "Yessaïn Nanadoumadji", url: siteUrl }],
-  creator: "Yessaïn Nanadoumadji",
+  authors: [{ name: "Dieudonné Routouang Souloukna", url: siteUrl }],
+  creator: "Dieudonné Routouang Souloukna",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Yessaïn Nanadoumadji — Développeur Full-Stack",
+    title: "Dieudonné Routouang Souloukna — Spécialiste en Nutrition et Diététique",
     description:
-      "Portfolio professionnel de Yessaïn Nanadoumadji — découvrez mes projets, compétences et parcours.",
+      "Portfolio professionnel de Dieudonné Routouang Souloukna, diplômé en Nutrition et Diététique.",
     url: siteUrl,
-    siteName: "Yessaïn Nanadoumadji Portfolio",
+    siteName: "Dieudonné Routouang Souloukna — Portfolio",
     locale: "fr_FR",
     type: "website",
     images: [
       {
-        url: "/images/profil.png",
+        url: "/images/profil-dieudonne.jpeg",
         width: 1200,
         height: 630,
-        alt: "Yessaïn Nanadoumadji — Développeur Full-Stack",
+        alt: "Dieudonné Routouang Souloukna — Nutrition et Diététique",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yessaïn Nanadoumadji — Développeur Full-Stack",
+    title: "Dieudonné Routouang Souloukna — Nutrition et Diététique",
     description:
-      "Portfolio professionnel de Yessaïn Nanadoumadji — projets, compétences et parcours.",
-    images: ["/images/profil.png"],
+      "Portfolio professionnel de Dieudonné Routouang Souloukna — Nutrition et Diététique.",
+    images: ["/images/profil-dieudonne.jpeg"],
   },
   robots: {
     index: true,
@@ -78,9 +75,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "3c4rwlF8Ve_zPpNy-l4rkl0YhbUNrLP3z6SR_4DUmfc",
-  },
 };
 
 const jsonLd = {
@@ -89,46 +83,21 @@ const jsonLd = {
     {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
-      name: "Yessaïn Nanadoumadji",
-      alternateName: ["Yessain Nanadoumadji", "Nanadoumadji Yessaïn"],
-      jobTitle: "Développeur Full-Stack",
+      name: "Dieudonné Routouang Souloukna",
+      jobTitle: "Spécialiste en Nutrition et Diététique",
       description:
-        "Développeur Full-Stack spécialisé en React, Next.js, Node.js et en conception des systèmes d'information.",
+        "Diplômé d'une Licence en Nutrition et Diététique.",
       url: siteUrl,
-      image: `${siteUrl}/images/profil.png`,
-      email: "nanadoumadjiyessain@gmail.com",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Dakar",
-        addressCountry: "Sénégal",
-      },
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: "EPF Africa",
-      },
-      sameAs: [
-        "https://github.com/YessainDev",
-        "https://linkedin.com/in/yessain"
-      ],
-      knowsAbout: [
-        "React",
-        "Next.js",
-        "Node.js",
-        "TypeScript",
-        "JavaScript",
-        "Tailwind CSS",
-        "Express",
-        "Sequelize",
-        "MySQL",
-        "REST API"
-      ]
+      image: `${siteUrl}/images/profil-dieudonne.jpeg`,
+      email: "routouangdieudonnesouloukna@gmail.com",
+      knowsAbout: ["Nutrition", "Diététique"],
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Yessaïn Nanadoumadji Portfolio",
-      description: "Portfolio professionnel de Yessaïn Nanadoumadji",
+      name: "Dieudonné Routouang Souloukna — Portfolio",
+      description: "Portfolio professionnel de Dieudonné Routouang Souloukna",
       publisher: {
         "@id": `${siteUrl}/#person`,
       },
@@ -149,7 +118,6 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full`}
     >
       <head>
-        <meta name="google-site-verification" content="3c4rwlF8Ve_zPpNy-l4rkl0YhbUNrLP3z6SR_4DUmfc" />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('portfolio-theme');var theme=t==='dark'?'dark':'light';document.documentElement.setAttribute('data-theme',theme);}catch(e){}})()`,

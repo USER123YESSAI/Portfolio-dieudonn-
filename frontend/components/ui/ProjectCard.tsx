@@ -29,13 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         setImgSrc(`${imageUrl}${imageUrl.includes("?") ? "&" : "?"}retry=${Date.now()}`);
       }, 3000);
     } else {
-      if (project.titre.toLowerCase().includes("commerce")) {
-        setImgSrc("/images/commerce1.png");
-      } else if (project.titre.toLowerCase().includes("portfolio")) {
-        setImgSrc("/images/projects/1788370893095-283250163.jpeg");
-      } else {
-        setImgSrc(null);
-      }
+      setImgSrc(null);
     }
   };
   const techs = parseTechnologies(project.technologies);

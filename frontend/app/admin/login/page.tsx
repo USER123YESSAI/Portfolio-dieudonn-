@@ -83,7 +83,7 @@ export default function AdminLoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full px-4 py-3 bg-white border border-[#e5dccb] rounded-lg text-sm text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-[#1a3826] focus:ring-1 focus:ring-[#1a3826] transition-all"
-              placeholder="admin@portfolio.com"
+              placeholder="routouangdieudonnesouloukna@gmail.com"
             />
           </div>
 
@@ -126,7 +126,7 @@ export default function AdminLoginPage() {
 
         <div className="text-center mt-6">
           <p className="text-xs text-gray-500">
-            Portfolio Yessaïn Nanadoumadji — Tous droits réservés
+            Portfolio Dieudonné Routouang Souloukna — Tous droits réservés
           </p>
         </div>
       </div>

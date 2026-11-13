@@ -7,6 +7,7 @@ import AboutSection from "@/components/sections/AboutSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import ProjectsGrid from "@/components/sections/ProjectsGrid";
 import { getProjects, getSettings, getSkills } from "@/lib/api";
+import { DEFAULT_SETTINGS, isCurrentOwnerSettings, normalizeSiteSettings } from "@/lib/defaults";
 import type { SiteSettings, Skill, Project } from "@/types";
 
 interface HomePageClientProps {
@@ -28,25 +29,22 @@ export default function HomePageClient({
   useEffect(() => {
     getSettings()
       .then((freshSettings) => {
-        if (freshSettings && Object.keys(freshSettings).length > 0) {
-          setSettings((prev) => ({ ...prev, ...freshSettings }));
+        if (!isCurrentOwnerSettings(freshSettings)) {
+          setSettings(DEFAULT_SETTINGS);
+          setSkills([]);
+          setProjects([]);
+          return;
         }
-      })
-      .catch(() => {});
+        setSettings((prev) => ({ ...prev, ...normalizeSiteSettings(freshSettings) }));
 
-    getSkills()
-      .then((freshSkills) => {
-        if (freshSkills && freshSkills.length > 0) {
-          setSkills(freshSkills);
-        }
-      })
-      .catch(() => {});
-
-    getProjects()
-      .then((freshProjects) => {
-        if (freshProjects && Array.isArray(freshProjects) && freshProjects.length > 0) {
-          setProjects(freshProjects);
-        }
+        return Promise.all([getSkills(), getProjects()]).then(([freshSkills, freshProjects]) => {
+          if (freshSkills && freshSkills.length > 0) {
+            setSkills(freshSkills);
+          }
+          if (freshProjects && Array.isArray(freshProjects) && freshProjects.length > 0) {
+            setProjects(freshProjects);
+          }
+        });
       })
       .catch(() => {});
   }, []);

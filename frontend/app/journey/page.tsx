@@ -6,21 +6,22 @@ import {
   getCertifications,
   getSettings,
 } from "@/lib/api";
-import { DEFAULT_SETTINGS } from "@/lib/defaults";
+import { DEFAULT_SETTINGS, isCurrentOwnerSettings, normalizeSiteSettings } from "@/lib/defaults";
 import type { Metadata } from "next";
+import type { Education, Experience, Certification } from "@/types";
 
 export const metadata: Metadata = {
   title: "Parcours",
-  description: "Mon parcours professionnel, formations académiques et certifications.",
+  description: "Formation en Nutrition et Diététique et parcours professionnel de Dieudonné Routouang Souloukna.",
 };
 
 export const revalidate = 60;
 
 export default async function JourneyPage() {
   let settings = DEFAULT_SETTINGS;
-  let experiences = [];
-  let educations = [];
-  let certifications = [];
+  let experiences: Experience[] = [];
+  let educations: Education[] = [];
+  let certifications: Certification[] = [];
 
   try {
     const [fetchedSettings, fetchedExp, fetchedEdu, fetchedCert] = await Promise.all([
@@ -29,14 +30,25 @@ export default async function JourneyPage() {
       getEducations(),
       getCertifications(),
     ]);
-    if (fetchedSettings && Object.keys(fetchedSettings).length > 0) {
-      settings = { ...DEFAULT_SETTINGS, ...fetchedSettings };
+    settings = normalizeSiteSettings(fetchedSettings);
+    if (isCurrentOwnerSettings(fetchedSettings)) {
+      if (fetchedExp) experiences = fetchedExp;
+      if (fetchedEdu) educations = fetchedEdu;
+      if (fetchedCert) certifications = fetchedCert;
     }
-    if (fetchedExp) experiences = fetchedExp;
-    if (fetchedEdu) educations = fetchedEdu;
-    if (fetchedCert) certifications = fetchedCert;
   } catch {
     // API unavailable
+  }
+
+  if (educations.length === 0) {
+    educations = [
+      {
+        id: 0,
+        intitule: "Licence en Nutrition et Diététique",
+        etablissement: "",
+        date_debut: "",
+      },
+    ];
   }
 
   return (
@@ -53,10 +65,10 @@ export default async function JourneyPage() {
 
           <div className="mb-14">
             <h1 className="text-4xl sm:text-5xl font-bold font-serif-custom mb-4" style={{ color: "var(--heading-color)" }}>
-              Mon Parcours
+              Formation et expériences
             </h1>
             <p className="text-base sm:text-lg" style={{ color: "var(--body-text)" }}>
-              Expériences professionnelles, cursus académique et certifications techniques.
+              Formation en nutrition et diététique. Les expériences et certifications seront ajoutées lorsqu’elles auront été communiquées.
             </p>
           </div>
           <Timeline

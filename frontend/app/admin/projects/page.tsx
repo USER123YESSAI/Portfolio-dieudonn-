@@ -41,7 +41,7 @@ export default function AdminProjectsPage() {
     titre: "",
     description: "",
     technologies: "",
-    categorie: "Full-Stack",
+    categorie: "Nutrition",
     lien_demo: "",
     lien_github: "",
     date_realisation: "",
@@ -80,7 +80,7 @@ export default function AdminProjectsPage() {
       titre: "",
       description: "",
       technologies: "",
-      categorie: "Full-Stack",
+      categorie: "Nutrition",
       lien_demo: "",
       lien_github: "",
       date_realisation: "",
@@ -99,7 +99,7 @@ export default function AdminProjectsPage() {
       technologies: Array.isArray(project.technologies)
         ? project.technologies.join(", ")
         : (project.technologies as unknown as string) || "",
-      categorie: project.categorie || "Full-Stack",
+      categorie: project.categorie || "Nutrition",
       lien_demo: project.lien_demo || "",
       lien_github: project.lien_github || "",
       date_realisation: project.date_realisation
@@ -183,10 +183,8 @@ export default function AdminProjectsPage() {
   };
 
   const categories = [
-    "Full-Stack",
-    "Front-End",
-    "Back-End",
-    "Mobile",
+    "Nutrition",
+    "Diététique",
     "Autre",
   ];
   const filteredProjects = projects.filter((p) => {
@@ -477,7 +475,7 @@ export default function AdminProjectsPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
-                    Technologies (séparées par des virgules) *
+                    Domaines et mots-clés (séparés par des virgules) *
                   </label>
                   <input
                     type="text"
@@ -487,7 +485,7 @@ export default function AdminProjectsPage() {
                       setForm({ ...form, technologies: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="React, Next.js, TypeScript, Node.js"
+                    placeholder="Nutrition, diététique"
                   />
                 </div>
                 <div>

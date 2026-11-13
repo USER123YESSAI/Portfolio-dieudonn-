@@ -264,7 +264,7 @@ export default function AdminExperiencesPage() {
                     setForm({ ...form, poste: e.target.value })
                   }
                   className={inputClass}
-                  placeholder="ex: Développeur Full-Stack Stagiare"
+                  placeholder="ex: Fonction ou expérience en nutrition et diététique"
                 />
               </div>
 
@@ -280,7 +280,7 @@ export default function AdminExperiencesPage() {
                     setForm({ ...form, entreprise: e.target.value })
                   }
                   className={inputClass}
-                  placeholder="ex: EPF Africa, Dakar"
+                  placeholder="ex: Établissement ou organisation"
                 />
               </div>
 

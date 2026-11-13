@@ -2,19 +2,20 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
 import ContactForm from "@/components/sections/ContactForm";
 import { getSettings } from "@/lib/api";
+import { DEFAULT_SETTINGS, normalizeSiteSettings } from "@/lib/defaults";
 import type { Metadata } from "next";
 import type { SiteSettings } from "@/types";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contactez Yessaïn Nanadoumadji pour un projet, un stage ou une opportunité professionnelle.",
+  description: "Contactez Dieudonné Routouang Souloukna pour échanger autour de la nutrition et de la diététique.",
 };
 
 export default async function ContactPage() {
-  let settings: SiteSettings = {};
+  let settings: SiteSettings = DEFAULT_SETTINGS;
 
   try {
-    settings = await getSettings();
+    settings = normalizeSiteSettings(await getSettings());
   } catch {
     // API unavailable
   }
@@ -38,7 +39,7 @@ export default async function ContactPage() {
                   Me Contacter
                 </h1>
                 <p className="text-base leading-relaxed" style={{ color: "var(--body-text)" }}>
-                  Vous avez une opportunité de stage, une alternance ou un projet à développer ? N&apos;hésitez pas à m&apos;écrire directement.
+                  Pour toute question ou proposition liée à la nutrition et à la diététique, n&apos;hésitez pas à m&apos;écrire.
                 </p>
               </div>
 
@@ -48,27 +49,27 @@ export default async function ContactPage() {
                     <Mail size={18} />
                   </div>
                   <a
-                    href={`mailto:${settings.email || "nanadoumadjiyessain@gmail.com"}`}
+                    href={`mailto:${settings.email || DEFAULT_SETTINGS.email}`}
                     className="contact-link transition-colors"
                     style={{ color: "var(--foreground)" }}
                   >
-                    {settings.email || "nanadoumadjiyessain@gmail.com"}
+                    {settings.email || DEFAULT_SETTINGS.email}
                   </a>
                 </div>
-                {(settings.phone || "+221 77 000 00 00") && (
+                {settings.phone && (
                   <div className="flex items-center gap-3 font-medium" style={{ color: "var(--foreground)" }}>
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--icon-bg)", border: "1px solid var(--border)", color: "var(--icon-color)" }}>
                       <Phone size={18} />
                     </div>
-                    <span style={{ color: "var(--foreground)" }}>{settings.phone || "+221 77 000 00 00"}</span>
+                    <span style={{ color: "var(--foreground)" }}>{settings.phone}</span>
                   </div>
                 )}
-                {(settings.location || "Dakar, Sénégal") && (
+                {settings.location && (
                   <div className="flex items-center gap-3 font-medium" style={{ color: "var(--foreground)" }}>
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "var(--icon-bg)", border: "1px solid var(--border)", color: "var(--icon-color)" }}>
                       <MapPin size={18} />
                     </div>
-                    <span style={{ color: "var(--foreground)" }}>{settings.location || "Dakar, Sénégal"}</span>
+                    <span style={{ color: "var(--foreground)" }}>{settings.location}</span>
                   </div>
                 )}
               </div>

@@ -22,6 +22,7 @@ export default function PublicLayout({ children, settings }: PublicLayoutProps) 
         setMobileOpen={setMobileOpen}
         theme={theme}
         toggleTheme={toggleTheme}
+        hasCv={Boolean(settings?.cv_path)}
       />
       <main className="pt-20 min-h-screen">{children}</main>
       <Footer settings={settings} />

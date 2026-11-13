@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/#accueil", label: "Accueil", id: "accueil" },
   { href: "/#a-propos", label: "À propos", id: "a-propos" },
   { href: "/#competences", label: "Compétences", id: "competences" },
-  { href: "/projects", label: "Projets" },
+  { href: "/projects", label: "Services & projets" },
   { href: "/journey", label: "Parcours" },
   { href: "/contact", label: "Contact" },
 ];
@@ -20,6 +20,7 @@ interface HeaderProps {
   setMobileOpen: (open: boolean) => void;
   theme: "dark" | "light";
   toggleTheme: () => void;
+  hasCv: boolean;
 }
 
 export default function Header({
@@ -27,6 +28,7 @@ export default function Header({
   setMobileOpen,
   theme,
   toggleTheme,
+  hasCv,
 }: HeaderProps) {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string>("accueil");
@@ -110,7 +112,7 @@ export default function Header({
           className="flex items-center text-2xl font-extrabold tracking-tight font-serif-custom transition-colors duration-300"
           style={{ color: "var(--heading-color)" }}
         >
-          YN<span style={{ color: "var(--logo-dot)" }}>.</span>
+          DRS<span style={{ color: "var(--logo-dot)" }}>.</span>
         </Link>
 
         {/* Desktop Nav Links */}
@@ -140,7 +142,7 @@ export default function Header({
         {/* Right: CV button + Theme toggle + Mobile menu */}
         <div className="flex items-center gap-3">
           {/* CV Button */}
-          <button
+          {hasCv && <button
             onClick={() => setCvModalOpen(true)}
             className="hidden sm:inline-flex items-center justify-center gap-1.5 px-4 py-2 text-sm font-semibold text-white rounded transition-all shadow-sm cursor-pointer"
             style={{ backgroundColor: "var(--btn-primary-bg)" }}
@@ -153,7 +155,7 @@ export default function Header({
           >
             <Download size={15} />
             <span>Télécharger CV</span>
-          </button>
+          </button>}
 
           {/* Theme Toggle Button */}
           <button
@@ -220,7 +222,7 @@ export default function Header({
                 </Link>
               );
             })}
-            <div
+            {hasCv && <div
               className="pt-3"
               style={{ borderTop: "1px solid var(--nav-border)" }}
             >
@@ -235,7 +237,7 @@ export default function Header({
                 <Download size={15} />
                 <span>Télécharger CV</span>
               </button>
-            </div>
+            </div>}
           </nav>
         </div>
       )}

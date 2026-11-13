@@ -8,10 +8,8 @@ import {
   CheckCircle,
   AlertCircle,
   X,
-  Code2,
-  Layers,
-  Wrench,
-  Users,
+  Apple,
+  Leaf,
   Check,
   Loader2,
 } from "lucide-react";
@@ -24,10 +22,8 @@ import {
 import type { Skill } from "@/types";
 
 const categories = [
-  { key: "langages", label: "Langages", icon: Code2 },
-  { key: "frameworks", label: "Frameworks & Libs", icon: Layers },
-  { key: "outils", label: "Outils & Méthodes", icon: Wrench },
-  { key: "soft_skills", label: "Soft Skills", icon: Users },
+  { key: "nutrition", label: "Nutrition", icon: Apple },
+  { key: "dietetique", label: "Diététique", icon: Leaf },
 ];
 
 export default function AdminSkillsPage() {
@@ -40,7 +36,7 @@ export default function AdminSkillsPage() {
   const [form, setForm] = useState({
     nom: "",
     niveau: 80,
-    categorie: "langages",
+    categorie: "nutrition",
     icone: "",
   });
   const [statusMsg, setStatusMsg] = useState<{
@@ -70,7 +66,7 @@ export default function AdminSkillsPage() {
 
   const handleOpenCreate = () => {
     setEditingId(null);
-    setForm({ nom: "", niveau: 80, categorie: "langages", icone: "" });
+    setForm({ nom: "", niveau: 80, categorie: "nutrition", icone: "" });
     setIsModalOpen(true);
   };
 
@@ -79,7 +75,7 @@ export default function AdminSkillsPage() {
     setForm({
       nom: skill.nom,
       niveau: skill.niveau || 80,
-      categorie: skill.categorie || "langages",
+      categorie: skill.categorie || "nutrition",
       icone: skill.icone || "",
     });
     setIsModalOpen(true);
@@ -282,7 +278,7 @@ export default function AdminSkillsPage() {
                   value={form.nom}
                   onChange={(e) => setForm({ ...form, nom: e.target.value })}
                   className={inputClass}
-                  placeholder="ex: React, TypeScript, Docker..."
+                  placeholder="ex: Nutrition, diététique..."
                 />
               </div>
 

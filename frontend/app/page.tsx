@@ -1,6 +1,6 @@
 import HomePageClient from "@/components/home/HomePageClient";
 import { getProjects, getSettings, getSkills } from "@/lib/api";
-import { DEFAULT_SETTINGS } from "@/lib/defaults";
+import { DEFAULT_SETTINGS, isCurrentOwnerSettings, normalizeSiteSettings } from "@/lib/defaults";
 import type { SiteSettings, Skill, Project } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -17,14 +17,14 @@ export default async function HomePage() {
       getSkills(),
       getProjects(),
     ]);
-    if (fetchedSettings && Object.keys(fetchedSettings).length > 0) {
-      settings = { ...DEFAULT_SETTINGS, ...fetchedSettings };
-    }
-    if (fetchedSkills && fetchedSkills.length > 0) {
-      skills = fetchedSkills;
-    }
-    if (fetchedProjects && Array.isArray(fetchedProjects)) {
-      projects = fetchedProjects;
+    settings = normalizeSiteSettings(fetchedSettings);
+    if (isCurrentOwnerSettings(fetchedSettings)) {
+      if (fetchedSkills && fetchedSkills.length > 0) {
+        skills = fetchedSkills;
+      }
+      if (fetchedProjects && Array.isArray(fetchedProjects)) {
+        projects = fetchedProjects;
+      }
     }
   } catch {
     // API unavailable — render with defaults initially

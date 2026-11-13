@@ -1,14 +1,14 @@
 import PublicLayout from "@/components/layout/PublicLayout";
 import ProjectsGrid from "@/components/sections/ProjectsGrid";
 import { getProjects, getSettings } from "@/lib/api";
-import { DEFAULT_SETTINGS } from "@/lib/defaults";
+import { DEFAULT_SETTINGS, isCurrentOwnerSettings, normalizeSiteSettings } from "@/lib/defaults";
 import type { Metadata } from "next";
 import type { Project } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Projets",
+  title: "Services et réalisations",
   description:
-    "Découvrez mes réalisations et projets de développement web et applications full-stack.",
+    "Découvrez les services et réalisations de Dieudonné Routouang Souloukna dans le domaine de la nutrition et de la diététique.",
 };
 
 export const revalidate = 60;
@@ -19,10 +19,8 @@ export default async function ProjectsPage() {
 
   try {
     const [fetchedSettings, fetchedProjects] = await Promise.all([getSettings(), getProjects()]);
-    if (fetchedSettings && Object.keys(fetchedSettings).length > 0) {
-      settings = { ...DEFAULT_SETTINGS, ...fetchedSettings };
-    }
-    if (fetchedProjects && Array.isArray(fetchedProjects)) {
+    settings = normalizeSiteSettings(fetchedSettings);
+    if (isCurrentOwnerSettings(fetchedSettings) && fetchedProjects && Array.isArray(fetchedProjects)) {
       projects = fetchedProjects;
     }
   } catch {

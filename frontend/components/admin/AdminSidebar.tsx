@@ -40,7 +40,7 @@ export default function AdminSidebar() {
             href="/admin/dashboard"
             className="text-xl font-bold font-serif-custom text-[#111827] flex items-center gap-1"
           >
-            YN<span className="text-[#b45309]">.</span>
+            DRS<span className="text-[#b45309]">.</span>
             <span className="text-xs font-sans font-bold bg-[#1a3826] text-white px-2 py-0.5 rounded ml-2">
               ADMIN
             </span>

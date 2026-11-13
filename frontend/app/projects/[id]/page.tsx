@@ -5,7 +5,9 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import PublicLayout from "@/components/layout/PublicLayout";
 import { getProject, getSettings, getAssetUrl } from "@/lib/api";
 import { formatFullDate, parseTechnologies } from "@/lib/utils";
+import { isCurrentOwnerSettings, normalizeSiteSettings } from "@/lib/defaults";
 import type { Metadata } from "next";
+import type { Project, SiteSettings } from "@/types";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -14,17 +16,27 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   try {
-    const project = await getProject(Number(id));
-    return { title: `${project.titre} - Yessaïn Nanadoumadji`, description: project.description };
+    const [project, settings] = await Promise.all([
+      getProject(Number(id)),
+      getSettings(),
+    ]);
+    if (!isCurrentOwnerSettings(settings) || !isPortfolioProject(project)) {
+      return { title: "Réalisation introuvable" };
+    }
+    return { title: `${project.titre} - Dieudonné Routouang Souloukna`, description: project.description };
   } catch {
     return { title: "Projet introuvable" };
   }
 }
 
+function isPortfolioProject(project: Project): boolean {
+  return ["Nutrition", "Diététique", "Autre"].includes(project.categorie || "");
+}
+
 export default async function ProjectDetailPage({ params }: Props) {
   const { id } = await params;
-  let project = null;
-  let settings = {};
+  let project: Project | null = null;
+  let settings: SiteSettings = {};
 
   try {
     [project, settings] = await Promise.all([
@@ -35,7 +47,8 @@ export default async function ProjectDetailPage({ params }: Props) {
     notFound();
   }
 
-  if (!project) notFound();
+  if (!project || !isCurrentOwnerSettings(settings) || !isPortfolioProject(project)) notFound();
+  settings = normalizeSiteSettings(settings);
 
   const imageUrl = getAssetUrl(project.image);
   const siteUrl =
@@ -125,7 +138,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               className="text-xs font-bold uppercase tracking-wider mb-3"
               style={{ color: "var(--heading-color)" }}
             >
-              Technologies utilisées
+              Thèmes et compétences associés
             </h3>
             <div className="flex flex-wrap gap-2">
               {parseTechnologies(project.technologies).map((tech: string) => (

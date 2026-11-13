@@ -23,6 +23,7 @@ import {
   uploadCV,
   getAssetUrl,
 } from "@/lib/api";
+import { DEFAULT_SETTINGS, isCurrentOwnerSettings } from "@/lib/defaults";
 
 export default function AdminSettingsPage() {
   const [settings, setSettings] = useState<{
@@ -86,9 +87,10 @@ export default function AdminSettingsPage() {
   useEffect(() => {
     adminGetSettings()
       .then((data) => {
+        const profileSettings = isCurrentOwnerSettings(data) ? data : DEFAULT_SETTINGS;
         setSettings({
-          ...data,
-          social_links: data.social_links || {
+          ...profileSettings,
+          social_links: profileSettings.social_links || {
             github: "",
             linkedin: "",
             twitter: "",
@@ -252,7 +254,7 @@ export default function AdminSettingsPage() {
                       setSettings({ ...settings, site_title: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="ex: Portfolio — Yessaïn Nanadoumadji"
+                    placeholder="ex: Portfolio — Dieudonné Routouang Souloukna"
                   />
                 </div>
                 <div>
@@ -295,7 +297,7 @@ export default function AdminSettingsPage() {
                       setSettings({ ...settings, hero_title: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="ex: Développeur Full-Stack"
+                    placeholder="ex: Nutrition et Diététique"
                   />
                 </div>
                 <div>
@@ -309,7 +311,7 @@ export default function AdminSettingsPage() {
                       setSettings({ ...settings, location: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="ex: Dakar, Sénégal"
+                    placeholder="Ville, pays (facultatif)"
                   />
                 </div>
               </div>
@@ -340,7 +342,7 @@ export default function AdminSettingsPage() {
                     setSettings({ ...settings, career_goal: e.target.value })
                   }
                   className={inputClass}
-                  placeholder="ex: Recherche un stage de 6 mois en développement web..."
+                  placeholder="Décrivez votre objectif professionnel..."
                 />
               </div>
             </div>
@@ -365,7 +367,7 @@ export default function AdminSettingsPage() {
                     setSettings({ ...settings, about_title: e.target.value })
                   }
                   className={inputClass}
-                  placeholder="ex: Un profil full stack ancré dans le concret."
+                  placeholder="ex: Un parcours consacré à la nutrition et à la diététique."
                 />
               </div>
 
@@ -380,7 +382,7 @@ export default function AdminSettingsPage() {
                     setSettings({ ...settings, about_text: e.target.value })
                   }
                   className={`${inputClass} resize-none`}
-                  placeholder="ex: Étudiant en Bachelor CSI 3 à l'EPF Africa Dakar, je conçois et développe des interfaces React soignées..."
+                  placeholder="Présentez votre parcours en nutrition et diététique..."
                 />
               </div>
 
@@ -395,7 +397,7 @@ export default function AdminSettingsPage() {
                     setSettings({ ...settings, about_languages: e.target.value })
                   }
                   className={inputClass}
-                  placeholder="ex: Français (langue maternelle), Anglais technique"
+                  placeholder="Renseignez les langues que vous souhaitez afficher"
                 />
               </div>
             </div>
@@ -521,7 +523,7 @@ export default function AdminSettingsPage() {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-3xl font-bold font-serif-custom text-[#1a3826]">
-                      YN
+                      DRS
                     </div>
                   )}
                 </div>
@@ -561,7 +563,7 @@ export default function AdminSettingsPage() {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-2xl font-bold font-serif-custom text-[#1a3826]">
-                      YN
+                      DRS
                     </div>
                   )}
                 </div>

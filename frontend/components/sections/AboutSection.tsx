@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { CheckCircle2, MapPin, Sparkles, GraduationCap } from "lucide-react";
+import { CheckCircle2, MapPin, GraduationCap } from "lucide-react";
 import { getAssetUrl } from "@/lib/api";
 import type { SiteSettings } from "@/types";
 
@@ -12,25 +12,18 @@ interface AboutSectionProps {
 
 const defaultQualities = [
   {
-    title: "Rigueur technique",
-    desc: "Code propre, architecture modulaire et respect des bonnes pratiques.",
+    title: "Nutrition",
+    desc: "Un domaine au cœur de ma formation universitaire.",
   },
   {
-    title: "Apprentissage rapide",
-    desc: "Curiosité active et montée en compétence fluide sur de nouvelles stacks.",
-  },
-  {
-    title: "Communication professionnelle",
-    desc: "Capacité d'écoute, reporting clair et collaboration efficace en équipe.",
-  },
-  {
-    title: "Résolution de problèmes",
-    desc: "Esprit d'analyse pour transformer des défis complexes en solutions viables.",
+    title: "Diététique",
+    desc: "Une formation consacrée aux liens entre alimentation et bien-être.",
   },
 ];
 
 export default function AboutSection({ settings }: AboutSectionProps) {
-  const photoUrl = getAssetUrl(settings.about_photo || settings.profile_photo) || "/images/about.png";
+  const photoUrl =
+    getAssetUrl(settings.about_photo || settings.profile_photo) || "/images/profil-dieudonne.jpeg";
   const [imgSrc, setImgSrc] = useState(photoUrl);
   const [retryCount, setRetryCount] = useState(0);
 
@@ -40,30 +33,30 @@ export default function AboutSection({ settings }: AboutSectionProps) {
   }, [photoUrl]);
 
   const handleImageError = () => {
-    if (retryCount < 3 && photoUrl !== "/images/about.png") {
+    if (retryCount < 3 && photoUrl !== "/images/profil-dieudonne.jpeg") {
       setTimeout(() => {
         setRetryCount((prev) => prev + 1);
         setImgSrc(`${photoUrl}${photoUrl.includes("?") ? "&" : "?"}retry=${Date.now()}`);
       }, 3000);
     } else {
-      setImgSrc("/images/about.png");
+      setImgSrc("/images/profil-dieudonne.jpeg");
     }
   };
 
   const title =
-    settings.about_title || "Un profil full stack dans le concret.";
+    settings.about_title || "Un parcours consacré à la nutrition et à la diététique.";
   const description =
     settings.about_text ||
-    "Jeune diplômé en Conception des Systèmes d’Information à l'EPF Africa de Dakar, je conçois et développe des interfaces React dynamiques, des API REST performantes et des architectures robustes connectées à des bases de données relationnelles.";
+    "Titulaire d'une Licence en Nutrition et Diététique, je souhaite poursuivre mon parcours professionnel dans ce domaine.";
   const languages =
-    settings.about_languages || "Français (courant), Anglais technique";
-  const location = settings.location || "Dakar, Sénégal";
+    settings.about_languages || "";
+  const location = settings.location || "";
 
   return (
     <section id="a-propos" className="py-20 sm:py-24 transition-colors duration-300 scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-10 items-start">
-          {/* Left Column: Presentation + Photo + Location */}
+          {/* Left Column: Presentation + Photo + Optional Location */}
           <div className="lg:col-span-6 space-y-6">
             {/* Label */}
             <div className="flex items-center gap-3">
@@ -94,7 +87,7 @@ export default function AboutSection({ settings }: AboutSectionProps) {
                    style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
                 <Image
                   src={imgSrc}
-                  alt="Photo À propos - Yessaïn Nanadoumadji"
+                  alt="Portrait de Dieudonné Routouang Souloukna"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 144px, 160px"
@@ -111,11 +104,13 @@ export default function AboutSection({ settings }: AboutSectionProps) {
                   {description}
                 </p>
 
-                <div className="flex items-center gap-2 text-sm font-semibold pt-1"
-                     style={{ color: "var(--heading-color)" }}>
-                  <MapPin size={18} className="text-red-500 fill-red-500/20 shrink-0" />
-                  <span>{location}</span>
-                </div>
+                {location && (
+                  <div className="flex items-center gap-2 text-sm font-semibold pt-1"
+                       style={{ color: "var(--heading-color)" }}>
+                    <MapPin size={18} className="text-red-500 fill-red-500/20 shrink-0" />
+                    <span>{location}</span>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -129,13 +124,12 @@ export default function AboutSection({ settings }: AboutSectionProps) {
               }}
             >
               <GraduationCap size={16} style={{ color: "var(--primary)" }} />
-              <span>Licence en Conception des Systèmes d’Information — EPF Africa, Dakar</span>
+              <span>Licence en Nutrition et Diététique</span>
             </div>
           </div>
 
-          {/* Right Column: 2x2 Qualities Grid + Languages Box */}
+          {/* Right Column: Areas of study + Optional Languages */}
           <div className="lg:col-span-6 space-y-4 lg:pt-8">
-            {/* 2x2 Grid of Strengths */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {defaultQualities.map((q, idx) => (
                 <div
@@ -173,8 +167,7 @@ export default function AboutSection({ settings }: AboutSectionProps) {
               ))}
             </div>
 
-            {/* Languages Card */}
-            <div
+            {languages && <div
               className="p-5 sm:p-6 rounded-2xl shadow-xs transition-colors duration-300 flex items-center gap-3"
               style={{
                 backgroundColor: "var(--card)",
@@ -189,7 +182,7 @@ export default function AboutSection({ settings }: AboutSectionProps) {
                 <strong className="font-semibold">Langues :</strong>{" "}
                 <span style={{ color: "var(--body-text)" }}>{languages}</span>
               </p>
-            </div>
+            </div>}
           </div>
         </div>
       </div>

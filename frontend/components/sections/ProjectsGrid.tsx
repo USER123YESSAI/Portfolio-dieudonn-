@@ -15,39 +15,41 @@ export default function ProjectsGrid({
   showFilters = true,
 }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>("Tous");
+  const portfolioProjects = projects.filter((project) =>
+    ["Nutrition", "Diététique", "Autre"].includes(project.categorie || ""),
+  );
 
   const allCategories = useMemo(() => {
-    // Default categories from screenshot: Tous, Full-Stack, Front-End, Back-End, Mobile
-    const defaultOrder = ["Full-Stack", "Front-End", "Back-End", "Mobile"];
+    const defaultOrder = ["Nutrition", "Diététique", "Autre"];
     const presentCats = [
-      ...new Set(projects.map((p) => p.categorie).filter(Boolean)),
+      ...new Set(portfolioProjects.map((p) => p.categorie).filter(Boolean)),
     ] as string[];
     const combined = [
       ...defaultOrder.filter((c) => presentCats.includes(c)),
       ...presentCats.filter((c) => !defaultOrder.includes(c)),
     ];
     return ["Tous", ...combined];
-  }, [projects]);
+  }, [portfolioProjects]);
 
   const filteredProjects = useMemo(() => {
-    if (activeCategory === "Tous") return projects;
-    return projects.filter((project) => project.categorie === activeCategory);
-  }, [projects, activeCategory]);
+    if (activeCategory === "Tous") return portfolioProjects;
+    return portfolioProjects.filter((project) => project.categorie === activeCategory);
+  }, [portfolioProjects, activeCategory]);
 
   return (
     <section id="projets" className="py-20 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        {/* Section Label: —— PROJETS */}
+        {/* Section Label: —— SERVICES & RÉALISATIONS */}
         <div className="flex items-center gap-3 mb-2">
           <span className="w-8 h-[1px]" style={{ backgroundColor: "var(--label-color)" }} />
           <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--label-color)" }}>
-            PROJETS
+            SERVICES &amp; RÉALISATIONS
           </span>
         </div>
 
         {/* Big Serif Heading */}
         <h2 className="text-4xl sm:text-5xl font-bold font-serif-custom mb-6" style={{ color: "var(--heading-color)" }}>
-          Réalisations <span className="italic font-serif-custom">&</span> travaux
+          Nutrition, diététique <span className="italic font-serif-custom">&amp;</span> réalisations
         </h2>
 
         {/* Filter Pills Row */}
@@ -88,10 +90,10 @@ export default function ProjectsGrid({
         ) : (
           <div className="rounded-2xl p-12 text-center" style={{ backgroundColor: "var(--card)", border: "1px solid var(--border)" }}>
             <p className="font-bold text-lg mb-1 font-serif-custom" style={{ color: "var(--heading-color)" }}>
-              Aucun projet pour le moment dans cette catégorie
+              Aucun service ou projet n&apos;est renseigné pour le moment
             </p>
             <p className="text-sm mb-6" style={{ color: "var(--body-text)" }}>
-              Sélectionnez une autre catégorie pour explorer le portfolio.
+              Les informations seront ajoutées lorsqu&apos;elles auront été confirmées.
             </p>
             <button
               onClick={() => setActiveCategory("Tous")}
@@ -99,7 +101,7 @@ export default function ProjectsGrid({
               style={{ backgroundColor: "var(--badge-primary)" }}
             >
               <RotateCcw size={13} />
-              <span>Afficher tous les projets</span>
+              <span>Afficher tout</span>
             </button>
           </div>
         )}

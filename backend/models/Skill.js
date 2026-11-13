@@ -15,6 +15,8 @@ const Skill = sequelize.define(
     },
     categorie: {
       type: DataTypes.ENUM(
+        "nutrition",
+        "dietetique",
         "langages",
         "frameworks",
         "outils",

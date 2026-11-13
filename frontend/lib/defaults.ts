@@ -1,25 +1,36 @@
 import type { SiteSettings } from "@/types";
 
 export const DEFAULT_SETTINGS: SiteSettings = {
-  site_title: "Yessaïn Nanadoumadji — Développeur Full-Stack",
+  site_title: "Dieudonné Routouang Souloukna — Spécialiste en Nutrition et Diététique",
   site_description:
-    "Portfolio professionnel de Yessaïn Nanadoumadji, développeur full-stack. Découvrez mes projets, compétences et parcours.",
-  hero_title: "Développeur Full-Stack",
-  hero_subtitle: "Licence en Conception des Systèmes d’Information — EPF Africa, Dakar",
-  bio: "Jeune diplômé en Conception des Systèmes d’Information à EPF Africa, Dakar. Je conçois des applications web modernes, du back-end robuste aux interfaces soignées — avec le souci du code propre, maintenable et utile.",
+    "Portfolio professionnel de Dieudonné Routouang Souloukna, diplômé d'une Licence en Nutrition et Diététique.",
+  hero_title: "Spécialiste en Nutrition et Diététique",
+  hero_subtitle: "Licence en Nutrition et Diététique",
+  bio: "Titulaire d'une Licence en Nutrition et Diététique, je souhaite mettre ma formation au service de projets qui valorisent une alimentation équilibrée et le bien-être.",
   career_goal:
-    "Recherche un stage ou une alternance en développement full-stack pour mettre en pratique mes compétences et contribuer à des projets innovants.",
-  email: "nanadoumadjiyessain@gmail.com",
-  phone: "+221 77 000 00 00",
-  location: "Dakar, Sénégal",
+    "Je souhaite m'investir dans un environnement professionnel lié à la nutrition et à la diététique, et contribuer à des initiatives autour de l'alimentation et du bien-être.",
+  email: "routouangdieudonnesouloukna@gmail.com",
+  phone: "",
+  location: "",
   social_links: {
-    github: "https://github.com/YessainDev",
-    linkedin: "https://linkedin.com/in/yessain",
+    github: "",
+    linkedin: "",
   },
-  profile_photo: "/images/profil.png",
-  about_photo: "/images/about.png",
-  about_title: "Un profil full stack dans le concret.",
+  profile_photo: "/images/profil-dieudonne.jpeg",
+  about_photo: "/images/profil-dieudonne.jpeg",
+  about_title: "Un parcours consacré à la nutrition et à la diététique.",
   about_text:
-    "Jeune diplômé en Conception des Systèmes d’Information à l'EPF Africa de Dakar, je conçois et développe des interfaces React dynamiques, des API REST performantes et des architectures robustes connectées à des bases de données relationnelles.",
-  about_languages: "Français (courant), Anglais technique",
+    "Ma formation en Nutrition et Diététique nourrit mon intérêt pour l'alimentation équilibrée et le bien-être. Je souhaite poursuivre mon parcours dans ce domaine et contribuer à des projets qui le mettent en valeur.",
+  about_languages: "",
 };
+
+export function isCurrentOwnerSettings(settings?: SiteSettings): boolean {
+  const email = settings?.email?.trim().toLowerCase();
+  return !email || email === DEFAULT_SETTINGS.email?.toLowerCase();
+}
+
+export function normalizeSiteSettings(settings?: SiteSettings): SiteSettings {
+  return isCurrentOwnerSettings(settings)
+    ? { ...DEFAULT_SETTINGS, ...settings }
+    : DEFAULT_SETTINGS;
+}
