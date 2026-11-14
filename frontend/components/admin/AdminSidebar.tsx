@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
   FolderKanban,
-  Code2,
+  HeartPulse,
   Briefcase,
   GraduationCap,
   Award,
@@ -18,8 +18,8 @@ import { useAuth } from "@/lib/auth";
 
 const navItems = [
   { href: "/admin/dashboard", label: "Tableau de bord", icon: LayoutDashboard },
-  { href: "/admin/projects", label: "Projets", icon: FolderKanban },
-  { href: "/admin/skills", label: "Compétences", icon: Code2 },
+  { href: "/admin/projects", label: "Services & Réalisations", icon: FolderKanban },
+  { href: "/admin/skills", label: "Compétences", icon: HeartPulse },
   { href: "/admin/experiences", label: "Expériences", icon: Briefcase },
   { href: "/admin/educations", label: "Formations", icon: GraduationCap },
   { href: "/admin/certifications", label: "Certifications", icon: Award },
@@ -46,7 +46,7 @@ export default function AdminSidebar() {
             </span>
           </Link>
           <p className="text-xs text-gray-500 mt-1 font-medium">
-            Espace de gestion portfolio
+            Espace Nutrition &amp; Diététique
           </p>
         </div>
       </div>

@@ -207,10 +207,10 @@ export default function AdminProjectsPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold font-serif-custom text-[#111827]">
-            Gestion des Projets
+            Services &amp; Réalisations
           </h1>
           <p className="text-[#4b5563] text-sm mt-1">
-            Gérez vos réalisations, images, liens de démo et code source ({projects.length} projet{projects.length > 1 ? "s" : ""}).
+            Gérez vos services, ateliers, études ou réalisations en nutrition et diététique ({projects.length} élément{projects.length > 1 ? "s" : ""}).
           </p>
         </div>
         <button
@@ -218,7 +218,7 @@ export default function AdminProjectsPage() {
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
         >
           <Plus size={18} />
-          <span>Nouveau Projet</span>
+          <span>Nouvelle réalisation</span>
         </button>
       </div>
 
@@ -369,7 +369,7 @@ export default function AdminProjectsPage() {
                         className="text-xs text-[#1a3826] hover:underline inline-flex items-center gap-1 font-semibold"
                       >
                         <ExternalLink size={13} />
-                        Démo
+                        Voir le lien
                       </a>
                     )}
                   </div>
@@ -468,7 +468,7 @@ export default function AdminProjectsPage() {
                     setForm({ ...form, description: e.target.value })
                   }
                   className={`${inputClass} resize-none`}
-                  placeholder="Décrivez les fonctionnalités et la valeur du projet..."
+                  placeholder="Décrivez l'objectif, le public cible et l'apport nutritionnel ou diététique..."
                 />
               </div>
 
@@ -506,7 +506,7 @@ export default function AdminProjectsPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
-                    Lien démo live (URL)
+                    Lien principal / Ressource (optionnel)
                   </label>
                   <input
                     type="url"
@@ -515,12 +515,12 @@ export default function AdminProjectsPage() {
                       setForm({ ...form, lien_demo: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="https://mon-projet.com"
+                    placeholder="https://exemple.com/article-ou-document"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
-                    Lien GitHub (URL)
+                    Lien complémentaire (optionnel)
                   </label>
                   <input
                     type="url"
@@ -529,14 +529,14 @@ export default function AdminProjectsPage() {
                       setForm({ ...form, lien_github: e.target.value })
                     }
                     className={inputClass}
-                    placeholder="https://github.com/yn/projet"
+                    placeholder="https://..."
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
-                  Image / capture d&apos;écran
+                  Photo ou illustration
                 </label>
                 <input
                   type="file"

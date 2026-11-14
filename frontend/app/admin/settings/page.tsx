@@ -441,7 +441,7 @@ export default function AdminSettingsPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
-                    Lien GitHub
+                    Autre lien professionnel (Site, Réseau…)
                   </label>
                   <input
                     type="url"
@@ -456,7 +456,7 @@ export default function AdminSettingsPage() {
                       })
                     }
                     className={inputClass}
-                    placeholder="https://github.com/votre-compte"
+                    placeholder="https://..."
                   />
                 </div>
                 <div>

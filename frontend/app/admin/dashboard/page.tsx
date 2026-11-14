@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   FolderKanban,
-  Code2,
+  HeartPulse,
   Briefcase,
   MessageSquare,
   GraduationCap,
@@ -18,7 +18,7 @@ import type { DashboardStats } from "@/types";
 const statCards = [
   {
     key: "projects" as const,
-    label: "Projets",
+    label: "Services & Réalisations",
     href: "/admin/projects",
     icon: FolderKanban,
     badgeColor: "bg-[#1a3826] text-white",
@@ -27,7 +27,7 @@ const statCards = [
     key: "skills" as const,
     label: "Compétences",
     href: "/admin/skills",
-    icon: Code2,
+    icon: HeartPulse,
     badgeColor: "bg-[#b45309] text-white",
   },
   {
@@ -80,7 +80,7 @@ export default function DashboardPage() {
             Vue d&apos;ensemble
           </h1>
           <p className="text-[#4b5563] text-sm mt-1">
-            Gérez facilement l&apos;ensemble du contenu de votre portfolio professionnel.
+            Gérez facilement votre profil, vos compétences, votre parcours et vos réalisations en nutrition et diététique.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -89,7 +89,7 @@ export default function DashboardPage() {
             className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
           >
             <Plus size={16} />
-            <span>Ajouter un projet</span>
+            <span>Ajouter une réalisation</span>
           </Link>
           <Link
             href="/admin/skills"
