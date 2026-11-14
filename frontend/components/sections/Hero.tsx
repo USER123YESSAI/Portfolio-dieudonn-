@@ -14,7 +14,7 @@ interface HeroProps {
 
 export default function Hero({ settings }: HeroProps) {
   const photoUrl =
-    getAssetUrl(settings.profile_photo ?? undefined) || "/images/profil-dieudonne.jpeg";
+    getAssetUrl(settings.profile_photo ?? undefined) || "/images/profil5.png";
   const [imgSrc, setImgSrc] = useState(photoUrl);
   const [retryCount, setRetryCount] = useState(0);
 
@@ -25,13 +25,13 @@ export default function Hero({ settings }: HeroProps) {
 
   const handleImageError = () => {
     // Si Render est en phase de réveil (cold start ~30s), retenter 3 fois avant de basculer sur le fallback
-    if (retryCount < 3 && photoUrl !== "/images/profil-dieudonne.jpeg") {
+    if (retryCount < 3 && photoUrl !== "/images/profil5.png") {
       setTimeout(() => {
         setRetryCount((prev) => prev + 1);
         setImgSrc(`${photoUrl}${photoUrl.includes("?") ? "&" : "?"}retry=${Date.now()}`);
       }, 3000);
     } else {
-      setImgSrc("/images/profil-dieudonne.jpeg");
+      setImgSrc("/images/profil5.png");
     }
   };
 

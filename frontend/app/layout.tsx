@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/profil-dieudonne.jpeg",
+        url: "/images/profil5.png",
         width: 1200,
         height: 630,
         alt: "Dieudonné Routouang Souloukna — Nutrition et Diététique",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     title: "Dieudonné Routouang Souloukna — Nutrition et Diététique",
     description:
       "Portfolio professionnel de Dieudonné Routouang Souloukna — Nutrition et Diététique.",
-    images: ["/images/profil-dieudonne.jpeg"],
+    images: ["/images/profil5.png"],
   },
   robots: {
     index: true,
@@ -90,7 +90,7 @@ const jsonLd = {
       description:
         "Diplômé d'une Licence en Nutrition et Diététique.",
       url: siteUrl,
-      image: `${siteUrl}/images/profil-dieudonne.jpeg`,
+      image: `${siteUrl}/images/profil5.png`,
       email: "routouangdieudonnesouloukna@gmail.com",
       knowsAbout: ["Nutrition", "Diététique"],
     },

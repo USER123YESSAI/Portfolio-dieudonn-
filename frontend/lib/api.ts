@@ -179,8 +179,8 @@ export const adminUploadAboutPhoto = (file: File) => {
 export const uploadAboutPhoto = adminUploadAboutPhoto;
 
 const LOCAL_ASSET_MAP: Record<string, string> = {
-  "/uploads/profile/1788375080335-890266699.png": "/images/profil-dieudonne.jpeg",
-  "/uploads/profile/1788375124479-305324185.png": "/images/profil-dieudonne.jpeg",
+  "/uploads/profile/1788375080335-890266699.png": "/images/profil5.png",
+  "/uploads/profile/1788375124479-305324185.png": "/images/profil5.png",
 };
 
 export const getAssetUrl = (path?: string) => {

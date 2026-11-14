@@ -90,11 +90,11 @@ const seed = async () => {
       },
       {
         cle: "profile_photo",
-        valeur: "/images/profil-dieudonne.jpeg",
+        valeur: "/images/profil5.png",
       },
       {
         cle: "about_photo",
-        valeur: "/images/profil-dieudonne.jpeg",
+        valeur: "/images/profil5.png",
       },
     ]);
 

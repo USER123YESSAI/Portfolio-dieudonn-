@@ -16,8 +16,8 @@ export const DEFAULT_SETTINGS: SiteSettings = {
     github: "",
     linkedin: "",
   },
-  profile_photo: "/images/profil-dieudonne.jpeg",
-  about_photo: "/images/profil-dieudonne.jpeg",
+  profile_photo: "/images/profil5.png",
+  about_photo: "/images/profil5.png",
   about_title: "Un parcours consacré à la nutrition et à la diététique.",
   about_text:
     "Ma formation en Nutrition et Diététique nourrit mon intérêt pour l'alimentation équilibrée et le bien-être. Je souhaite poursuivre mon parcours dans ce domaine et contribuer à des projets qui le mettent en valeur.",

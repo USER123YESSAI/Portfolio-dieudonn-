@@ -24,7 +24,7 @@ const defaultQualities = [
 
 export default function AboutSection({ settings }: AboutSectionProps) {
   const photoUrl =
-    getAssetUrl(settings.about_photo || settings.profile_photo) || "/images/profil-dieudonne.jpeg";
+    getAssetUrl(settings.about_photo || settings.profile_photo) || "/images/profil5.png";
   const [imgSrc, setImgSrc] = useState(photoUrl);
   const [retryCount, setRetryCount] = useState(0);
 
@@ -34,13 +34,13 @@ export default function AboutSection({ settings }: AboutSectionProps) {
   }, [photoUrl]);
 
   const handleImageError = () => {
-    if (retryCount < 3 && photoUrl !== "/images/profil-dieudonne.jpeg") {
+    if (retryCount < 3 && photoUrl !== "/images/profil5.png") {
       setTimeout(() => {
         setRetryCount((prev) => prev + 1);
         setImgSrc(`${photoUrl}${photoUrl.includes("?") ? "&" : "?"}retry=${Date.now()}`);
       }, 3000);
     } else {
-      setImgSrc("/images/profil-dieudonne.jpeg");
+      setImgSrc("/images/profil5.png");
     }
   };
 
