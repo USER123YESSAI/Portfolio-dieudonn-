@@ -130,14 +130,14 @@ export default function AdminEducationsPage() {
   };
 
   const inputClass =
-    "w-full px-3.5 py-2.5 bg-white border border-[#e5dccb] rounded-lg text-sm text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-[#1a3826] transition-all";
+    "w-full px-3.5 py-2.5 bg-white border border-[#dce4d7] rounded-lg text-sm text-[#14261c] placeholder:text-gray-400 focus:outline-none focus:border-[#2d6a4f] transition-all";
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold font-serif-custom text-[#111827]">
+          <h1 className="text-3xl font-bold font-serif-custom text-[#14261c]">
             Formations Académiques
           </h1>
           <p className="text-[#4b5563] text-sm mt-1">
@@ -146,7 +146,7 @@ export default function AdminEducationsPage() {
         </div>
         <button
           onClick={handleOpenCreate}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#2d6a4f] hover:bg-[#1b4332] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
         >
           <Plus size={18} />
           <span>Nouvelle Formation</span>
@@ -174,16 +174,16 @@ export default function AdminEducationsPage() {
       {/* List */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-8 h-8 border-3 border-[#1a3826] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : educations.length === 0 ? (
-        <div className="bg-white border border-[#e5dccb] rounded-xl p-12 text-center text-gray-500">
+        <div className="bg-white border border-[#dce4d7] rounded-xl p-12 text-center text-gray-500">
           <GraduationCap size={40} className="mx-auto mb-3 opacity-40" />
-          <p className="font-medium text-[#111827]">Aucune formation académique enregistrée.</p>
+          <p className="font-medium text-[#14261c]">Aucune formation académique enregistrée.</p>
         </div>
       ) : (
-        <div className="bg-white border border-[#e5dccb] rounded-xl overflow-hidden shadow-xs">
-          <div className="divide-y divide-[#e5dccb]">
+        <div className="bg-white border border-[#dce4d7] rounded-xl overflow-hidden shadow-xs">
+          <div className="divide-y divide-[#dce4d7]">
             {educations.map((edu) => (
               <div
                 key={edu.id}
@@ -191,17 +191,17 @@ export default function AdminEducationsPage() {
               >
                 <div>
                   <div className="flex items-center gap-2.5 mb-1">
-                    <span className="text-xs px-2.5 py-0.5 rounded-md font-semibold font-mono bg-[#b45309] text-white">
+                    <span className="text-xs px-2.5 py-0.5 rounded-md font-semibold font-mono bg-[#c87d4b] text-white">
                       Formation
                     </span>
                     <span className="text-xs font-mono text-gray-500 font-semibold">
                       {formatDate(edu.date_debut)} — {formatDate(edu.date_fin)}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold font-serif-custom text-[#111827]">
+                  <h3 className="text-lg font-bold font-serif-custom text-[#14261c]">
                     {edu.intitule}
                   </h3>
-                  <p className="text-[#b45309] text-sm font-semibold">
+                  <p className="text-[#c87d4b] text-sm font-semibold">
                     {edu.etablissement}
                   </p>
                   {edu.description && (
@@ -214,7 +214,7 @@ export default function AdminEducationsPage() {
                 <div className="flex items-center gap-2 shrink-0">
                   <button
                     onClick={() => handleOpenEdit(edu)}
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-700 bg-white border border-[#e5dccb] hover:bg-gray-50 inline-flex items-center gap-1.5 transition-all"
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-700 bg-white border border-[#dce4d7] hover:bg-gray-50 inline-flex items-center gap-1.5 transition-all"
                   >
                     <Pencil size={13} />
                     Modifier
@@ -236,9 +236,9 @@ export default function AdminEducationsPage() {
       {/* Modal / Form */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white border border-[#e5dccb] rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl">
-            <div className="flex items-center justify-between pb-4 border-b border-[#e5dccb] mb-6">
-              <h2 className="text-xl font-bold font-serif-custom text-[#111827]">
+          <div className="bg-white border border-[#dce4d7] rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-[#dce4d7] mb-6">
+              <h2 className="text-xl font-bold font-serif-custom text-[#14261c]">
                 {editingId
                   ? "Modifier la formation"
                   : "Nouvelle formation"}
@@ -253,7 +253,7 @@ export default function AdminEducationsPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Intitulé du Diplôme / Cursus *
                 </label>
                 <input
@@ -269,7 +269,7 @@ export default function AdminEducationsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Établissement / École *
                 </label>
                 <input
@@ -286,7 +286,7 @@ export default function AdminEducationsPage() {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                     Date de début *
                   </label>
                   <input
@@ -300,7 +300,7 @@ export default function AdminEducationsPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                  <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                     Date de fin (ou date prévue) *
                   </label>
                   <input
@@ -316,7 +316,7 @@ export default function AdminEducationsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Description
                 </label>
                 <textarea
@@ -330,11 +330,11 @@ export default function AdminEducationsPage() {
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#e5dccb]">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#dce4d7]">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-[#e5dccb] text-sm font-semibold rounded-lg transition-all"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-[#dce4d7] text-sm font-semibold rounded-lg transition-all"
                 >
                   <X size={15} />
                   <span>Annuler</span>
@@ -342,7 +342,7 @@ export default function AdminEducationsPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] disabled:opacity-50 text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#2d6a4f] hover:bg-[#1b4332] disabled:opacity-50 text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
                 >
                   {submitting ? (
                     <>

@@ -128,14 +128,14 @@ export default function AdminSkillsPage() {
   };
 
   const inputClass =
-    "w-full px-3.5 py-2.5 bg-white border border-[#e5dccb] rounded-lg text-sm text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-[#1a3826] transition-all";
+    "w-full px-3.5 py-2.5 bg-white border border-[#dce4d7] rounded-lg text-sm text-[#14261c] placeholder:text-gray-400 focus:outline-none focus:border-[#2d6a4f] transition-all";
 
   return (
     <div className="space-y-8">
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold font-serif-custom text-[#111827]">
+          <h1 className="text-3xl font-bold font-serif-custom text-[#14261c]">
             Gestion des Compétences
           </h1>
           <p className="text-[#4b5563] text-sm mt-1">
@@ -144,7 +144,7 @@ export default function AdminSkillsPage() {
         </div>
         <button
           onClick={handleOpenCreate}
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#2d6a4f] hover:bg-[#1b4332] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
         >
           <Plus size={18} />
           <span>Nouvelle Compétence</span>
@@ -172,7 +172,7 @@ export default function AdminSkillsPage() {
       {/* Skills Grouped by Category */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-8 h-8 border-3 border-[#1a3826] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
@@ -183,10 +183,10 @@ export default function AdminSkillsPage() {
             return (
               <div
                 key={key}
-                className="bg-white border border-[#e5dccb] rounded-xl p-6 shadow-xs flex flex-col"
+                className="bg-white border border-[#dce4d7] rounded-xl p-6 shadow-xs flex flex-col"
               >
-                <div className="flex items-center justify-between pb-4 border-b border-[#e5dccb] mb-4">
-                  <span className="bg-[#1a3826] text-white px-3 py-1 rounded-md text-xs font-semibold font-mono inline-flex items-center gap-1.5">
+                <div className="flex items-center justify-between pb-4 border-b border-[#dce4d7] mb-4">
+                  <span className="bg-[#2d6a4f] text-white px-3 py-1 rounded-md text-xs font-semibold font-mono inline-flex items-center gap-1.5">
                     <Icon size={14} />
                     <span>{label}</span>
                   </span>
@@ -204,20 +204,20 @@ export default function AdminSkillsPage() {
                     catSkills.map((skill) => (
                       <div
                         key={skill.id}
-                        className="flex items-center justify-between p-3 rounded-lg bg-[#f7f4ec]/50 border border-[#e5dccb]/60 hover:border-[#e5dccb] transition-all"
+                        className="flex items-center justify-between p-3 rounded-lg bg-[#f6f7f2]/50 border border-[#dce4d7]/60 hover:border-[#dce4d7] transition-all"
                       >
                         <div className="flex-1 mr-4">
                           <div className="flex items-center justify-between mb-1.5">
-                            <span className="text-sm font-bold text-[#111827]">
+                            <span className="text-sm font-bold text-[#14261c]">
                               {skill.nom}
                             </span>
                             <span className="text-xs font-mono font-semibold text-gray-500">
                               {skill.niveau}%
                             </span>
                           </div>
-                          <div className="h-1.5 bg-[#e5dccb] rounded-full overflow-hidden">
+                          <div className="h-1.5 bg-[#dce4d7] rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-[#1a3826] rounded-full"
+                              className="h-full bg-[#2d6a4f] rounded-full"
                               style={{ width: `${skill.niveau}%` }}
                             />
                           </div>
@@ -226,7 +226,7 @@ export default function AdminSkillsPage() {
                         <div className="flex items-center gap-1 shrink-0">
                           <button
                             onClick={() => handleOpenEdit(skill)}
-                            className="p-1.5 rounded text-gray-600 hover:bg-white hover:text-[#1a3826] transition-all"
+                            className="p-1.5 rounded text-gray-600 hover:bg-white hover:text-[#2d6a4f] transition-all"
                             title="Modifier"
                           >
                             <Pencil size={15} />
@@ -252,9 +252,9 @@ export default function AdminSkillsPage() {
       {/* Modal / Formulaire */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white border border-[#e5dccb] rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
-            <div className="flex items-center justify-between pb-4 border-b border-[#e5dccb] mb-6">
-              <h2 className="text-xl font-bold font-serif-custom text-[#111827]">
+          <div className="bg-white border border-[#dce4d7] rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl">
+            <div className="flex items-center justify-between pb-4 border-b border-[#dce4d7] mb-6">
+              <h2 className="text-xl font-bold font-serif-custom text-[#14261c]">
                 {editingId
                   ? "Modifier la compétence"
                   : "Nouvelle compétence"}
@@ -269,7 +269,7 @@ export default function AdminSkillsPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Nom de la compétence *
                 </label>
                 <input
@@ -283,7 +283,7 @@ export default function AdminSkillsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Catégorie *
                 </label>
                 <select
@@ -302,9 +302,9 @@ export default function AdminSkillsPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#111827] mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#14261c] mb-1.5">
                   Niveau de maîtrise (0 à 100%) :{" "}
-                  <span className="font-mono text-[#1a3826]">
+                  <span className="font-mono text-[#2d6a4f]">
                     {form.niveau}%
                   </span>
                 </label>
@@ -316,15 +316,15 @@ export default function AdminSkillsPage() {
                   onChange={(e) =>
                     setForm({ ...form, niveau: Number(e.target.value) })
                   }
-                  className="w-full accent-[#1a3826] cursor-pointer"
+                  className="w-full accent-[#2d6a4f] cursor-pointer"
                 />
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#e5dccb]">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#dce4d7]">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-[#e5dccb] text-sm font-semibold rounded-lg transition-all"
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white hover:bg-gray-100 text-gray-700 border border-[#dce4d7] text-sm font-semibold rounded-lg transition-all"
                 >
                   <X size={15} />
                   <span>Annuler</span>
@@ -332,7 +332,7 @@ export default function AdminSkillsPage() {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] disabled:opacity-50 text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#2d6a4f] hover:bg-[#1b4332] disabled:opacity-50 text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
                 >
                   {submitting ? (
                     <>

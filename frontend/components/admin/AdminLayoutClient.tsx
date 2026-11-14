@@ -34,9 +34,9 @@ export default function AdminLayoutClient({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#f7f4ec]">
+      <div className="min-h-screen flex items-center justify-center bg-[#f6f7f2]">
         <div className="flex flex-col items-center gap-3">
-          <div className="w-8 h-8 border-[3px] border-[#1a3826] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-[3px] border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
           <span className="text-sm font-semibold text-[#4b5563]">
             Chargement de l&apos;espace administrateur...
           </span>
@@ -48,7 +48,7 @@ export default function AdminLayoutClient({
   const pageTitle = pageTitles[pathname] ?? "";
 
   return (
-    <div className="flex min-h-screen bg-[#f7f4ec] text-[#111827]">
+    <div className="flex min-h-screen bg-[#f6f7f2] text-[#14261c]">
       {/* Desktop Sidebar */}
       <div className="hidden lg:block">
         <AdminSidebar />
@@ -70,7 +70,7 @@ export default function AdminLayoutClient({
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header Bar */}
-        <header className="sticky top-0 z-30 bg-white border-b border-[#e5dccb] px-6 py-4 flex items-center justify-between shadow-sm">
+        <header className="sticky top-0 z-30 bg-white border-b border-[#dce4d7] px-6 py-4 flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-4">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -79,7 +79,7 @@ export default function AdminLayoutClient({
             >
               {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-            <div className="flex items-center gap-2 text-sm font-semibold text-[#111827]">
+            <div className="flex items-center gap-2 text-sm font-semibold text-[#14261c]">
               <span className="text-gray-400 font-normal">Administration /</span>
               <span>{pageTitle}</span>
             </div>
@@ -88,7 +88,7 @@ export default function AdminLayoutClient({
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/admin/messages"
-              className="p-2 text-gray-500 hover:text-[#1a3826] hover:bg-gray-100 rounded-lg transition-colors relative"
+              className="p-2 text-gray-500 hover:text-[#2d6a4f] hover:bg-gray-100 rounded-lg transition-colors relative"
               title="Notifications & Messages"
               aria-label="Notifications"
             >
@@ -97,13 +97,13 @@ export default function AdminLayoutClient({
             <Link
               href="/"
               target="_blank"
-              className="p-2 text-gray-500 hover:text-[#1a3826] hover:bg-gray-100 rounded-lg transition-colors hidden sm:inline-flex"
+              className="p-2 text-gray-500 hover:text-[#2d6a4f] hover:bg-gray-100 rounded-lg transition-colors hidden sm:inline-flex"
               title="Voir le site public"
               aria-label="Voir le site public"
             >
               <ExternalLink size={18} />
             </Link>
-            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#f3ece0] border border-[#e5dccb] rounded-full text-xs font-semibold text-[#1a3826]">
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-[#ebf1e7] border border-[#dce4d7] rounded-full text-xs font-semibold text-[#2d6a4f]">
               <User size={14} />
               <span>{user?.nom ?? "Administrateur"}</span>
             </div>

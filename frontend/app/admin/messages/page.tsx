@@ -132,7 +132,7 @@ export default function AdminMessagesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold font-serif-custom text-[#111827]">
+          <h1 className="text-3xl font-bold font-serif-custom text-[#14261c]">
             Messagerie / Contact
           </h1>
           <p className="text-[#4b5563] text-sm mt-1">
@@ -171,7 +171,7 @@ export default function AdminMessagesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Rechercher par nom, email ou contenu..."
-            className="w-full pl-10 pr-10 py-2.5 bg-white border border-[#e5dccb] rounded-lg text-sm text-[#111827] placeholder:text-gray-400 focus:outline-none focus:border-[#1a3826] transition-all shadow-xs"
+            className="w-full pl-10 pr-10 py-2.5 bg-white border border-[#dce4d7] rounded-lg text-sm text-[#14261c] placeholder:text-gray-400 focus:outline-none focus:border-[#2d6a4f] transition-all shadow-xs"
           />
           {search && (
             <button
@@ -189,8 +189,8 @@ export default function AdminMessagesPage() {
             onClick={() => setFilterRead("all")}
             className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               filterRead === "all"
-                ? "bg-[#1a3826] text-white shadow-xs"
-                : "bg-white border border-[#e5dccb] text-gray-700 hover:bg-gray-100"
+                ? "bg-[#2d6a4f] text-white shadow-xs"
+                : "bg-white border border-[#dce4d7] text-gray-700 hover:bg-gray-100"
             }`}
           >
             <Inbox size={14} />
@@ -200,8 +200,8 @@ export default function AdminMessagesPage() {
             onClick={() => setFilterRead("unread")}
             className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               filterRead === "unread"
-                ? "bg-[#1a3826] text-white shadow-xs"
-                : "bg-white border border-[#e5dccb] text-gray-700 hover:bg-gray-100"
+                ? "bg-[#2d6a4f] text-white shadow-xs"
+                : "bg-white border border-[#dce4d7] text-gray-700 hover:bg-gray-100"
             }`}
           >
             <Bell size={14} />
@@ -211,8 +211,8 @@ export default function AdminMessagesPage() {
             onClick={() => setFilterRead("read")}
             className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
               filterRead === "read"
-                ? "bg-[#1a3826] text-white shadow-xs"
-                : "bg-white border border-[#e5dccb] text-gray-700 hover:bg-gray-100"
+                ? "bg-[#2d6a4f] text-white shadow-xs"
+                : "bg-white border border-[#dce4d7] text-gray-700 hover:bg-gray-100"
             }`}
           >
             <CheckCheck size={14} />
@@ -224,12 +224,12 @@ export default function AdminMessagesPage() {
       {/* Inbox Split View */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <div className="w-8 h-8 border-3 border-[#1a3826] border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-3 border-[#2d6a4f] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : filteredMessages.length === 0 ? (
-        <div className="bg-white border border-[#e5dccb] rounded-xl p-12 text-center text-gray-500">
+        <div className="bg-white border border-[#dce4d7] rounded-xl p-12 text-center text-gray-500">
           <MailX size={40} className="mx-auto mb-3 opacity-40" />
-          <p className="font-medium text-[#111827]">Aucun message trouvé.</p>
+          <p className="font-medium text-[#14261c]">Aucun message trouvé.</p>
         </div>
       ) : (
         <div className="grid lg:grid-cols-12 gap-6">
@@ -243,23 +243,23 @@ export default function AdminMessagesPage() {
                   onClick={() => handleSelectMessage(msg)}
                   className={`p-4 rounded-xl cursor-pointer transition-all border ${
                     isSelected
-                      ? "bg-[#f3ece0] border-[#1a3826] shadow-sm"
-                      : "bg-white border-[#e5dccb] hover:bg-[#faf7f0]"
+                      ? "bg-[#ebf1e7] border-[#2d6a4f] shadow-sm"
+                      : "bg-white border-[#dce4d7] hover:bg-[#faf7f0]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-bold text-[#111827]">
+                    <span className="text-sm font-bold text-[#14261c]">
                       {msg.nom}
                     </span>
                     {!msg.statut_lu ? (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#b45309]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#c87d4b]" />
                     ) : (
                       <span className="text-[11px] text-gray-400 font-mono">
                         Lu
                       </span>
                     )}
                   </div>
-                  <p className="text-xs font-semibold text-[#1a3826] line-clamp-1 mb-1">
+                  <p className="text-xs font-semibold text-[#2d6a4f] line-clamp-1 mb-1">
                     {msg.sujet}
                   </p>
                   <p className="text-xs text-[#4b5563] line-clamp-2">
@@ -277,12 +277,12 @@ export default function AdminMessagesPage() {
           {/* Reading Pane column (7 cols) */}
           <div className="lg:col-span-7">
             {selectedMessage ? (
-              <div className="bg-white border border-[#e5dccb] rounded-xl p-6 sm:p-8 shadow-xs sticky top-24">
-                <div className="flex items-start justify-between pb-6 border-b border-[#e5dccb]">
+              <div className="bg-white border border-[#dce4d7] rounded-xl p-6 sm:p-8 shadow-xs sticky top-24">
+                <div className="flex items-start justify-between pb-6 border-b border-[#dce4d7]">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
                       {!selectedMessage.statut_lu ? (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#b45309] text-white">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#c87d4b] text-white">
                           <Mail size={12} /> Non lu
                         </span>
                       ) : (
@@ -294,11 +294,11 @@ export default function AdminMessagesPage() {
                         {formatDate(selectedMessage.date_envoi)}
                       </span>
                     </div>
-                    <h2 className="text-xl font-bold font-serif-custom text-[#111827]">
+                    <h2 className="text-xl font-bold font-serif-custom text-[#14261c]">
                       {selectedMessage.sujet}
                     </h2>
                     <p className="text-sm text-gray-600 mt-1">
-                      De : <span className="font-semibold text-[#111827]">{selectedMessage.nom}</span> ({selectedMessage.email})
+                      De : <span className="font-semibold text-[#14261c]">{selectedMessage.nom}</span> ({selectedMessage.email})
                     </p>
                   </div>
 
@@ -315,7 +315,7 @@ export default function AdminMessagesPage() {
                           ? "Marquer non lu"
                           : "Marquer lu"
                       }
-                      className="p-2 rounded-lg bg-white border border-[#e5dccb] text-gray-600 hover:text-[#1a3826] hover:bg-gray-50 transition-all"
+                      className="p-2 rounded-lg bg-white border border-[#dce4d7] text-gray-600 hover:text-[#2d6a4f] hover:bg-gray-50 transition-all"
                     >
                       {selectedMessage.statut_lu ? (
                         <Mail size={16} />
@@ -333,14 +333,14 @@ export default function AdminMessagesPage() {
                   </div>
                 </div>
 
-                <div className="py-6 whitespace-pre-wrap text-sm sm:text-base text-[#111827] leading-relaxed">
+                <div className="py-6 whitespace-pre-wrap text-sm sm:text-base text-[#14261c] leading-relaxed">
                   {selectedMessage.contenu}
                 </div>
 
-                <div className="pt-6 border-t border-[#e5dccb] flex items-center justify-between">
+                <div className="pt-6 border-t border-[#dce4d7] flex items-center justify-between">
                   <a
                     href={`mailto:${selectedMessage.email}?subject=Re: ${encodeURIComponent(selectedMessage.sujet)}`}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a3826] hover:bg-[#142a1d] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#2d6a4f] hover:bg-[#1b4332] text-white text-sm font-semibold rounded-lg transition-all shadow-xs"
                   >
                     <span>Répondre par Email</span>
                     <ExternalLink size={14} />
@@ -348,7 +348,7 @@ export default function AdminMessagesPage() {
                 </div>
               </div>
             ) : (
-              <div className="bg-white border border-[#e5dccb] rounded-xl p-12 text-center text-gray-500">
+              <div className="bg-white border border-[#dce4d7] rounded-xl p-12 text-center text-gray-500">
                 <p>Sélectionnez un message pour le lire dans le volet de lecture.</p>
               </div>
             )}
